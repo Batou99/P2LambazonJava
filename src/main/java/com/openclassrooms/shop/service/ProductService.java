@@ -34,25 +34,24 @@ public class ProductService {
 	 */
 	public List<Product> getAllProducts() {
 
-		//change the return type from array to List<T> and propagate the change 
-		ProductRepository product = new ProductRepository();
-		List<Product> listProducts = Arrays.asList(product.findAll()); 
+		//change the return type from array to List<T> and propagate the change throughout app
+		List<Product> listProducts = Arrays.asList(productRepository.findAll()); 
 		
 		return listProducts;
 	}
 
 	/**
-	 *
 	 * @param productId Id of the product
-	 * @return a product form the inventory
+	 * @return a product from the inventory
 	 */
 	public Product getProductById(Long productId)
 	{
 		// TODO implement the method
 		//return a product from the inventory
 		//give a value to productId
-		//change return type and return productId
 		
+		
+				
 		return null;
 
 	}
