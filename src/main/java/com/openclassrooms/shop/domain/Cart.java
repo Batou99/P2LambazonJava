@@ -11,8 +11,8 @@ public class Cart {
      * @return the actual cartline list
      */
     public List<CartLine> getCartLineList() {
-        //TODO implement the method
-        return null;
+    	
+        return getCartLineList();
     }
 
     /**
@@ -22,6 +22,8 @@ public class Cart {
      */
     public void addItem(Product product, int quantity) {
         // TODO implement the method
+    	
+    	
     }
 
     /**

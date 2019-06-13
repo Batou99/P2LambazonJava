@@ -44,15 +44,14 @@ public class ProductService {
 	 * @param productId Id of the product
 	 * @return a product from the inventory
 	 */
-	public Product getProductById(Long productId)
-	{
+	public Product getProductById(Long productId) {
 		// TODO implement the method
-		//return a product from the inventory
-		//give a value to productId
-		
+		//store info in productId
+		//return productId or the actual product
+		CartLine cartL = new CartLine(null, 0);
 		
 				
-		return null;
+		return cartL.getProduct();
 
 	}
 
