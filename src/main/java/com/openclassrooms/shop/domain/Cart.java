@@ -1,6 +1,7 @@
 package com.openclassrooms.shop.domain;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +24,9 @@ public class Cart {
     public void addItem(Product product, int quantity) {
         // TODO implement the method
     	
-    	
+    	//if product not in  cart, then add
+    	//else if product in cart, then quantity+
+    	    	
     }
 
     /**
@@ -38,11 +41,10 @@ public class Cart {
     /**
      * @return total value of a cart
      */
-    public double getTotalValue()
-    {
-         //TODO implement the method
+    public double getTotalValue() {
+        //TODO implement the method
+    	
         return 0.0;
-
     }
 
     /**

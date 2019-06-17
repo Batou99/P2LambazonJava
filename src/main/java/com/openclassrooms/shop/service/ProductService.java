@@ -34,7 +34,7 @@ public class ProductService {
 	 */
 	public List<Product> getAllProducts() {
 
-		//change the return type from array to List<T> and propagate the change throughout app
+		//change the return type from array to List<T> and propagate the change throughout application
 		List<Product> listProducts = Arrays.asList(productRepository.findAll()); 
 		
 		return listProducts;
@@ -45,23 +45,18 @@ public class ProductService {
 	 * @return a product from the inventory
 	 */
 	public Product getProductById(Long productId) {
-		// TODO implement the method
-		//store info in productId
-		//return productId or the actual product
-		CartLine cartL = new CartLine(null, 0);
 		
-				
-		return cartL.getProduct();
-
+		//implement the method
+		return productRepository.findOne(productId);
 	}
 
 	/**
 	 * Update the quantities left for each product in the inventory depending of ordered the quantities
 	 * @param productId ID of the product to be updated
 	 */
-	public void updateProductQuantities(Long productId, int quantity)
-	{
+	public void updateProductQuantities(Long productId, int quantity) {
 
-		// TODO implement the method
+		//implement the method
+		productRepository.updateProductStocks(productId.intValue(), quantity);
 	}
 }
