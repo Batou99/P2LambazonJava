@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class Cart {
+	
+	private Product product;
+    private int quantity;
+    
+    //cart constructor 
+    
+    CartLine cartL = new CartLine(product, quantity);
 
     /**
      *
@@ -24,9 +31,9 @@ public class Cart {
     public void addItem(Product product, int quantity) {
         // TODO implement the method
     	
-    	//if product not in  cart, then add
+    	//if product not in cart, then add
     	//else if product in cart, then quantity+
-    	    	
+    	
     }
 
     /**
@@ -44,16 +51,16 @@ public class Cart {
     public double getTotalValue() {
         //TODO implement the method
     	
-        return 0.0;
+        return cartL.getSubtotal();
     }
 
     /**
      * @return Get average value of a cart
      */
-    public double getAverageValue()
-    {
+    public double getAverageValue() {
         // TODO implement the method
-        return 0.0;
+    	
+        return cartL.getSubtotal() / cartL.getQuantity();
     }
 
     /**
@@ -63,6 +70,8 @@ public class Cart {
     public Product findProductInCartLines(Long productId)
     {
         // TODO implement the method
+    	//if productId > 0 then return product
+    	    	
         return null;
     }
 
