@@ -10,9 +10,12 @@ public class Cart {
 	private Product product;
     private int quantity;
     
-    //cart constructor 
-    
-    CartLine cartL = new CartLine(product, quantity);
+    public Cart (Product product, int quantity) {
+    	this.product = product;
+        this.quantity = quantity;
+    }
+
+	CartLine cartL = new CartLine(product, quantity);
 
     /**
      *
@@ -49,18 +52,20 @@ public class Cart {
      * @return total value of a cart
      */
     public double getTotalValue() {
-        //TODO implement the method
+        //implement the method
     	
-        return cartL.getSubtotal();
+        //return cartL.getSubtotal();
+        return 0.0;
     }
 
     /**
      * @return Get average value of a cart
      */
     public double getAverageValue() {
-        // TODO implement the method
+        //implement the method
     	
-        return cartL.getSubtotal() / cartL.getQuantity();
+        //return cartL.getSubtotal() / cartL.getQuantity();
+        return 0.0;
     }
 
     /**

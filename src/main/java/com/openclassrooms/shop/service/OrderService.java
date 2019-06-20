@@ -2,6 +2,7 @@ package com.openclassrooms.shop.service;
 
 import com.openclassrooms.shop.domain.Cart;
 import com.openclassrooms.shop.domain.Order;
+import com.openclassrooms.shop.domain.Product;
 import com.openclassrooms.shop.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,13 @@ import java.time.LocalDate;
 
 @Service
 public class OrderService {
+	
+	private Product product;
+    private int quantity;
 
     private OrderRepository orderRepository;
     private ProductService productService;
-    private Cart cart = new Cart();
+    private Cart cart = new Cart(product, quantity);
 
 
     @Autowired

@@ -22,10 +22,14 @@ public class CartTest {
     ProductRepository productRepository;
     OrderRepository orderRepository ;
     ProductService productService;
+    
+    Product product;
+    int quantity;
 
     @Before
     public void init() {
-        cart = new Cart();
+    	
+        cart = new Cart(product, quantity);
         productRepository = new ProductRepository();
         orderRepository = new OrderRepository();
         productService = new ProductService(productRepository, orderRepository);
