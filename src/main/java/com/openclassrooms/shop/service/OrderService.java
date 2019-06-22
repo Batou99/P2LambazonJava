@@ -11,13 +11,10 @@ import java.time.LocalDate;
 
 @Service
 public class OrderService {
-	
-	private Product product;
-    private int quantity;
 
     private OrderRepository orderRepository;
     private ProductService productService;
-    private Cart cart = new Cart(product, quantity);
+    private Cart cart = new Cart();
 
 
     @Autowired

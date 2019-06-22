@@ -9,12 +9,8 @@ public class Cart {
 	
 	private Product product;
     private int quantity;
+    private List<Cart> cart = new ArrayList<>(); 
     
-    public Cart (Product product, int quantity) {
-    	this.product = product;
-        this.quantity = quantity;
-    }
-
 	CartLine cartL = new CartLine(product, quantity);
 
     /**
@@ -36,6 +32,11 @@ public class Cart {
     	
     	//if product not in cart, then add
     	//else if product in cart, then quantity+
+    	if (cart.isEmpty() == true) { 
+    		quantity = product.getStock();
+    	} else {
+    		quantity++;
+    	}
     	
     }
 
@@ -54,8 +55,7 @@ public class Cart {
     public double getTotalValue() {
         //implement the method
     	
-        //return cartL.getSubtotal();
-        return 0.0;
+        return cartL.getSubtotal();
     }
 
     /**
@@ -64,20 +64,19 @@ public class Cart {
     public double getAverageValue() {
         //implement the method
     	
-        //return cartL.getSubtotal() / cartL.getQuantity();
-        return 0.0;
+        return cartL.getSubtotal() / cartL.getQuantity();
     }
 
     /**
      * @param productId the getProductById id to search for
      * @return getProductById in the cart if it finds it
      */
-    public Product findProductInCartLines(Long productId)
-    {
+    public Product findProductInCartLines(Long productId) {
+    	
         // TODO implement the method
     	//if productId > 0 then return product
     	    	
-        return null;
+    	return null;
     }
 
     /**
