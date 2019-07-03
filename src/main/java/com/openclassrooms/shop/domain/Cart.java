@@ -7,11 +7,12 @@ import java.util.Optional;
 
 public class Cart {
 	
-	private Product product;
-    private int quantity;
-    private List<Cart> cart = new ArrayList<>(); 
-    
-	CartLine cartL = new CartLine(product, quantity);
+	private List<CartLine> cart;
+    Product product;
+	
+	public Cart() {
+		this.cart = new ArrayList<>();
+	}
 
     /**
      *
@@ -19,7 +20,7 @@ public class Cart {
      */
     public List<CartLine> getCartLineList() {
     	
-        return getCartLineList();
+        return cart;
     }
 
     /**
@@ -28,14 +29,22 @@ public class Cart {
      * @param quantity the quantity
      */
     public void addItem(Product product, int quantity) {
-        // TODO implement the method
+        //implement the method
+    	CartLine cartL = new CartLine(product, quantity);
     	
-    	//if product not in cart, then add
-    	//else if product in cart, then quantity+
-    	if (cart.isEmpty() == true) { 
-    		quantity = product.getStock();
+    	//adds a product in the cart
+    	if (cart.isEmpty()) { 
+    		
+    		cart.add(cartL);    		
+    		
+    	//increase the quantity of added product
     	} else {
-    		quantity++;
+    		CartLine cartP = getCartLineList().stream() //convert to stream
+    				.filter(x -> product.equals(x.getProduct())) //filter out product
+    				.findFirst().get(); //get the product
+    		//increase quantity
+    		int q = cartP.getQuantity();
+    		cartP.setQuantity(q + quantity);
     	}
     	
     }
@@ -55,7 +64,7 @@ public class Cart {
     public double getTotalValue() {
         //implement the method
     	
-        return cartL.getSubtotal();
+        return 0.0;
     }
 
     /**
@@ -64,7 +73,7 @@ public class Cart {
     public double getAverageValue() {
         //implement the method
     	
-        return cartL.getSubtotal() / cartL.getQuantity();
+        return 0.0;
     }
 
     /**
@@ -75,6 +84,7 @@ public class Cart {
     	
         // TODO implement the method
     	//if productId > 0 then return product
+    	
     	    	
     	return null;
     }
