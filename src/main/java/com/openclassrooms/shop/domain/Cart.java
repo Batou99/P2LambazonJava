@@ -8,7 +8,6 @@ import java.util.Optional;
 public class Cart {
 	
 	private List<CartLine> cart;
-    Product product;
 	
 	public Cart() {
 		this.cart = new ArrayList<>();
@@ -32,16 +31,17 @@ public class Cart {
         //implement the method
     	CartLine cartL = new CartLine(product, quantity);
     	
-    	//adds a product in the cart
-    	if (cart.isEmpty()) { 
+    	CartLine cartP = getCartLineList().stream() //convert to stream
+				.filter(x -> product.equals(x.getProduct())) //filter out product
+				.findFirst().orElse(null); //get the product
+    	
+    	//adds a product in the cart if empty
+    	if (cartP == null) { 
     		
-    		cart.add(cartL);    		
-    		
+    		cart.add(cartL);
     	//increase the quantity of added product
     	} else {
-    		CartLine cartP = getCartLineList().stream() //convert to stream
-    				.filter(x -> product.equals(x.getProduct())) //filter out product
-    				.findFirst().get(); //get the product
+    		
     		//increase quantity
     		int q = cartP.getQuantity();
     		cartP.setQuantity(q + quantity);
@@ -64,14 +64,26 @@ public class Cart {
     public double getTotalValue() {
         //implement the method
     	
-        return 0.0;
+    	//loop through cart
+    	//get price get quantity
+    	
+    	double value = 0.0;
+    	
+    	for (int i = 0; i < cart.size(); i++) {
+    		
+    		//loop: cart -> cartLine -> total
+
+    		value = cart.get(i).getSubtotal(); //PROBLEM: getSubtotal() does not have any value
+    	}
+    	
+        return value; //this is returning 0.0
     }
 
     /**
      * @return Get average value of a cart
      */
     public double getAverageValue() {
-        //implement the method
+        // TODO implement the method
     	
         return 0.0;
     }
@@ -83,7 +95,9 @@ public class Cart {
     public Product findProductInCartLines(Long productId) {
     	
         // TODO implement the method
-    	//if productId > 0 then return product
+    	//if cart contains cartL
+    	//return product
+    	//else do nothing
     	
     	    	
     	return null;
