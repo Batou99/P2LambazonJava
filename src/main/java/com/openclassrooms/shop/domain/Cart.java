@@ -67,16 +67,16 @@ public class Cart {
     	//loop through cart
     	//get price get quantity
     	
-    	double value = 0.0;
+    	double totalValue = 0.0;
     	
     	for (int i = 0; i < cart.size(); i++) {
     		
     		//loop: cart -> cartLine -> total
 
-    		value = cart.get(i).getSubtotal(); //PROBLEM: getSubtotal() does not have any value
+    		totalValue += cart.get(i).getSubtotal(); //PROBLEM: getSubtotal() does not have any value
     	}
     	
-        return value; //this is returning 0.0
+        return totalValue; //this is returning 0.0
     }
 
     /**
@@ -85,7 +85,22 @@ public class Cart {
     public double getAverageValue() {
         // TODO implement the method
     	
-        return 0.0;
+    	double totalPrice = 0.0;
+    	double cartQuantity = 0.0;
+
+    		for (int j = 0; j < cart.size(); j++) {
+    		
+    			for (int k = 0; k < cart.get(j).getQuantity(); k++) {
+    				
+    				cartQuantity += 1;
+    			}
+
+    			totalPrice += cart.get(j).getSubtotal();
+    		}
+    		//totalPrice /= 3;
+    		//use streams or loops to loop through cart and get quantity
+    	
+        return totalPrice / cartQuantity; //this is returning 0.0
     }
 
     /**
