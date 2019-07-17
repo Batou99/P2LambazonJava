@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Cart {
 	
@@ -28,23 +29,24 @@ public class Cart {
      * @param quantity the quantity
      */
     public void addItem(Product product, int quantity) {
-        //implement the method
-    	CartLine cartL = new CartLine(product, quantity);
     	
-    	CartLine cartP = getCartLineList().stream() //convert to stream
+    	CartLine cartLine = new CartLine(product, quantity);
+    	
+    	//filters and gets a product
+    	CartLine cartProduct = cart.stream() //convert to stream
 				.filter(x -> product.equals(x.getProduct())) //filter out product
 				.findFirst().orElse(null); //get the product
     	
     	//adds a product in the cart if empty
-    	if (cartP == null) { 
+    	if (cartProduct == null) { 
     		
-    		cart.add(cartL);
+    		cart.add(cartLine);
     	//increase the quantity of added product
     	} else {
     		
     		//increase quantity
-    		int q = cartP.getQuantity();
-    		cartP.setQuantity(q + quantity);
+    		int q = cartProduct.getQuantity();
+    		cartProduct.setQuantity(q + quantity);
     	}
     	
     }
@@ -62,60 +64,52 @@ public class Cart {
      * @return total value of a cart
      */
     public double getTotalValue() {
-        //implement the method
-    	
-    	//loop through cart
-    	//get price get quantity
     	
     	double totalValue = 0.0;
     	
+    	//loop through cart
     	for (int i = 0; i < cart.size(); i++) {
     		
-    		//loop: cart -> cartLine -> total
-
-    		totalValue += cart.get(i).getSubtotal(); //PROBLEM: getSubtotal() does not have any value
+    		totalValue += cart.get(i).getSubtotal(); //increase totalValue 
     	}
     	
-        return totalValue; //this is returning 0.0
+        return totalValue;
     }
 
     /**
      * @return Get average value of a cart
      */
     public double getAverageValue() {
-        // TODO implement the method
     	
-    	double totalPrice = 0.0;
-    	double cartQuantity = 0.0;
-
-    		for (int j = 0; j < cart.size(); j++) {
+    	int totalQuantity = 0;
     		
-    			for (int k = 0; k < cart.get(j).getQuantity(); k++) {
-    				
-    				cartQuantity += 1;
-    			}
-
-    			totalPrice += cart.get(j).getSubtotal();
+    		//loop through cart
+    		for (int j = 0; j < cart.size(); j++) {  			
+    			
+    			totalQuantity += cart.get(j).getQuantity(); //increases quantity
     		}
-    		//totalPrice /= 3;
-    		//use streams or loops to loop through cart and get quantity
     	
-        return totalPrice / cartQuantity; //this is returning 0.0
+        return getTotalValue() / totalQuantity; //returns the average value
     }
 
     /**
      * @param productId the getProductById id to search for
      * @return getProductById in the cart if it finds it
      */
+    
     public Product findProductInCartLines(Long productId) {
     	
-        // TODO implement the method
-    	//if cart contains cartL
-    	//return product
-    	//else do nothing
-    	
-    	    	
-    	return null;
+    	//loop through cart
+    	for (int x = 0; x < cart.size(); x++) { 
+    		
+    		long id = cart.get(x).getProduct().getId();
+    		
+    		if (productId == id) {
+    			
+    			return cart.get(x).getProduct(); //returns a product
+    		}
+    	}
+    	return null; //otherwise, returns nothing
     }
 
     /**

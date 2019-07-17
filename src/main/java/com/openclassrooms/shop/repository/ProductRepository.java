@@ -44,7 +44,11 @@ public class ProductRepository {
     {
         return products.stream().filter(p -> p.getStock() > 0).sorted(Comparator.comparing(Product::getName)).toArray(Product[]::new);
     }
-    
+    /**
+     * 
+     * @param productId 
+     * @return one product from inventory
+     */
     public Product findOne(long productId) {
     	Product product = products.stream().filter(p -> p.getId() == productId).findFirst().get();
     	return product;

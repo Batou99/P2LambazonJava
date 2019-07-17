@@ -34,10 +34,10 @@ public class ProductService {
 	 */
 	public List<Product> getAllProducts() {
 
-		//change the return type from array to List<T> and propagate the change throughout application
+		//change the type from array to List<T>
 		List<Product> listProducts = Arrays.asList(productRepository.findAll()); 
 		
-		return listProducts;
+		return listProducts; //returns list of products
 	}
 
 	/**
@@ -46,8 +46,7 @@ public class ProductService {
 	 */
 	public Product getProductById(Long productId) {
 		
-		//implement the method
-		return productRepository.findOne(productId);
+		return productRepository.findOne(productId); //returns one product from the inventory
 	}
 
 	/**
@@ -55,8 +54,8 @@ public class ProductService {
 	 * @param productId ID of the product to be updated
 	 */
 	public void updateProductQuantities(Long productId, int quantity) {
-
-		//implement the method
-		productRepository.updateProductStocks(productId.intValue(), quantity);
+		
+		//update the product stock
+		productRepository.updateProductStocks(productId.intValue(), quantity); //update the product stocks
 	}
 }
